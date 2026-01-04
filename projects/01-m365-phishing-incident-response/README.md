@@ -1,6 +1,5 @@
 🔐 Microsoft 365 Phishing Incident Response Simulation
 ## Project Overview
-
 This project simulates a realistic Microsoft 365 account compromise via phishing, focusing on identity abuse, mailbox persistence, and incident response rather than malware or endpoint exploitation.
 
 The objective was to demonstrate how a SOC analyst would:
@@ -10,10 +9,10 @@ The objective was to demonstrate how a SOC analyst would:
 - Assess impact
 - Contain and remediate the incident
 - Extract lessons learned
-- All activity was performed in a controlled lab tenant using standard Microsoft 365 tooling.
+
+All activity was performed in a **controlled lab tenant** using standard Microsoft 365 tooling.
 
 ## Incident Summary (Executive View)
-
 - **Incident Type:** Account Compromise (Phishing)  
 - **Attack Vector:** Credential theft via phishing  
 - **Affected Asset:** Exchange Online mailbox  
@@ -26,7 +25,6 @@ The objective was to demonstrate how a SOC analyst would:
 - **Status:** Contained and remediated 
 
 ## Environment Overview
-
 - **Identity Platform:** Microsoft Entra ID
 - **Email Platform:** Exchange Online
 - **Endpoint:** Windows 11 (domain-joined)
@@ -34,79 +32,77 @@ The objective was to demonstrate how a SOC analyst would:
 - **Security Controls:**
   - MFA registered (not enforced at time of compromise)
   - No Conditional Access restrictions initially applied
-  - Baseline State (Pre-Incident)
-  - Before simulating the attack, the environment was validated to ensure a clean baseline:
-  - User was a standard domain user
-  - No local or domain administrative privileges
-  - No mailbox rules configured
-  - Email forwarding disabled
-  - No abnormal sign-in activity observed
-  - Security logs reviewed under administrative context
-  - This baseline ensured that any subsequent activity could be confidently attributed to the simulated compromise.
-  - Attack Simulation Overview
-  - The attack was intentionally scoped to credential abuse only, reflecting one of the most common real-world Microsoft 365 incidents.
-  - Simulated Attacker Capabilities
-  - Valid username and password obtained via phishing
-  - No malware
-  - No endpoint compromise
-  - No privilege escalation
+
+## Baseline State (Pre-Incident)
+Before simulating the attack, the environment was validated to ensure a clean baseline:
+- User was a **standard domain user**
+- No local or domain administrative privileges
+- No mailbox rules configured
+- Email forwarding disabled
+- No abnormal sign-in activity observed
+- Security logs reviewed under administrative context
+This baseline ensured that any subsequent activity could be confidently attributed to the simulated compromise.
+
+## Attack Simulation Overview
+The attack was intentionally scoped to credential abuse only, reflecting one of the most common real-world Microsoft 365 incidents.
+
+**Simulated Attacker Capabilities**
+- Valid username and password obtained via phishing
+- No malware
+- No endpoint compromise
+- No privilege escalation
 
 ## Phase 1 – Initial Access (Credential Abuse)
-The attacker authenticated to Outlook on the web using stolen credentials from a foreign IP address, creating a clear anomaly in Entra ID sign-in logs.
+The attacker authenticated to Outlook on the web using stolen credentials from a **foreign IP address**, creating a clear anomaly in Entra ID sign-in logs.
 
-- **Key indicators observed:**
-  - New geographic location
-  - New IP address
-  - Browser-based sign-in
-  - Successful authentication using single-factor authentication
-  - This activity was consistent with credential compromise rather than user error.
+**Key indicators observed:**
+- New geographic location
+- New IP address
+- Browser-based sign-in
+- Successful authentication using single-factor authentication
+This activity was consistent with credential compromise rather than user error.
 
 ## Phase 2 – Persistence via Mailbox Rule
-
 After gaining access, the attacker created a malicious inbox rule designed to suppress security-related emails.
-- **Rule behavior:**
-  - Condition: Subject or body contains the keyword "security"
 
-- **Action:**
-  - Move message to Archive
-  - Mark message as read
-  - This technique delays detection by hiding warning emails while maintaining mailbox functionality.
+**Rule behavior:**
+  - Condition: Subject or body contains the keyword "security"
+  - **Action:**
+    - Move message to Archive
+    - Mark message as read
+This technique delays detection by hiding warning emails while maintaining mailbox functionality.
 
 ## Phase 3 – Impact (Outbound Phishing)
-
 The compromised mailbox was used to send a small number of phishing-style emails to controlled recipients.
-- **Observed impact:**
-  - Emails successfully delivered
-  - Message trace confirmed sender, recipient, timestamp, and delivery status
-  - Trust abuse demonstrated without large-scale spamming
-  - This escalated the incident from a simple account anomaly to an active security incident.
+
+**Observed impact:**
+- Emails successfully delivered
+- Message trace confirmed sender, recipient, timestamp, and delivery status
+- Trust abuse demonstrated without large-scale spamming
+This escalated the incident from a simple account anomaly to an active security incident.
 
 ## Phase 4 – Investigation & Correlation
-
-- **During investigation, the following were confirmed:**
-  - Unauthorized sign-ins aligned with mailbox rule creation
-  - Inbox rule explained lack of user awareness
-  - Outbound phishing activity confirmed via message trace
- 
+During investigation, the following were confirmed:
+- Unauthorized sign-ins aligned with mailbox rule creation
+- Inbox rule explained lack of user awareness
+- Outbound phishing activity confirmed via message trace
 - **No evidence of:**
   - Lateral movement
   - OAuth abuse
   - Email forwarding
   - Additional compromised accounts
-  - A clear and coherent incident timeline was reconstructed.
+A clear and coherent incident timeline was reconstructed.
 
 ## Phase 5 – Containment & Remediation
-
-- **Containment actions followed correct incident response sequencing:**
-  - Session revocation to invalidate active attacker tokens
-  - Password reset with forced change on next login
-  - Removal of malicious inbox rule
-  - MFA enforcement confirmed post-incident
-  - User notification (conceptual)
-
+Containment actions followed correct incident response sequencing:
+- Session revocation to invalidate active attacker tokens
+- Password reset with forced change on next login
+- Removal of malicious inbox rule
+- MFA enforcement confirmed post-incident
+- User notification (conceptual)
 This order ensured access was terminated without destroying investigative evidence.
 
-Root Cause Analysis
+## Root Cause Analysis
 Primary Cause
 
 User credentials compromised via phishing
