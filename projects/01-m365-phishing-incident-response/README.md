@@ -7,14 +7,14 @@ This incident simulates a realistic Microsoft 365 phishing-based account comprom
 
 The attacker successfully obtained valid credentials via phishing and authenticated to the account from an unfamiliar location. No malware was deployed; instead, the attacker relied on legitimate cloud authentication and Exchange Online features to persist access.
 
--**Post-compromise activity focused on:**
+- **Post-compromise activity focused on:**
   - Establishing mailbox-based persistence
   - Suppressing security notifications
   - Leveraging a trusted internal identity to send outbound phishing emails
 
 This scenario reflects common real-world identity attacks where cloud-native abuse replaces traditional endpoint exploitation.
 
--**The objective was to demonstrate how a SOC analyst would:**
+- **The objective was to demonstrate how a SOC analyst would:**
   - Identify a compromised account
   - Investigate attacker activity
   - Assess impact
