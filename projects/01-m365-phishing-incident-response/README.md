@@ -175,6 +175,10 @@ This attack path reflects common identity-based intrusions where attackers explo
 | Hardening        | Screenshot 14 |
 
 ---
+## Evidence Handling
+All screenshots and supporting artifacts are stored in the `/evidence` directory and referenced by phase and sequence number.
+
+Evidence is intentionally separated from analysis to preserve readability while maintaining traceability between investigative steps and supporting data.
 
 ## Skills Demonstrated
 
