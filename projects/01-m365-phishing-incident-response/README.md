@@ -23,6 +23,18 @@ This scenario reflects common real-world identity attacks where cloud-native abu
 
 All activity was performed in a **controlled lab tenant** using standard Microsoft 365 tooling.
 
+## How to Review This Case Study
+
+This case study is structured to mirror how a SOC analyst or security engineer would investigate and document a real Microsoft 365 phishing incident.
+
+Reviewers are encouraged to:
+- Start with the **Incident Summary** for a high-level overview
+- Follow the **phase-based narrative** (Initial Access → Persistence → Impact → Investigation → Containment)
+- Use the **Evidence Index** to correlate investigative steps with supporting screenshots
+- Focus on **analysis and decision-making**, not just screenshots
+
+The emphasis is on realistic attack paths, investigation logic, and correct incident response sequencing.
+
 ## Incident Summary (Executive View)
 - **Incident Type:** Account Compromise (Phishing)  
 - **Attack Vector:** Credential theft via phishing  
@@ -185,6 +197,8 @@ This attack path reflects common identity-based intrusions where attackers explo
 - Alert on inbox rule creation and modification
 - Alert on first outbound phishing email from a user
 - Perform periodic mailbox rule audits
+
+> Screenshots are intentionally limited and selected to demonstrate key decision points rather than exhaustively document every action.
 
 ## Evidence Index
 
