@@ -26,7 +26,7 @@ This portfolio demonstrates practical experience across:
 ### 🔐 Microsoft 365 Phishing Incident Response Simulation
 **Focus:** Credential abuse, mailbox persistence, outbound phishing, remediation
 
-- Investigated a phishing-based account compromise
+- Investigated a phishing-based Microsoft 365 account compromise using identity telemetry, mailbox analysis, and structured incident response.
 - Identified inbox-rule persistence used to suppress security alerts
 - Confirmed outbound phishing activity via message trace
 - Performed containment and account hardening
