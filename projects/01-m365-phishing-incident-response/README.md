@@ -187,6 +187,7 @@ This attack path reflects common identity-based intrusions where attackers explo
 - Perform periodic mailbox rule audits
 
 ## Evidence Index
+
 | Phase           | Evidence |
 |-----------------|----------|
 | Baseline        | [01](evidence/01-ad-user-group-membership.png), [02](evidence/02-endpoint-identity-network.png), [03](evidence/03-endpoint-privilege-groups.png), [04](evidence/04-mailbox-rules-baseline.png), [05](evidence/05-mailbox-forwarding-baseline.png) |
